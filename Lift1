@@ -1,0 +1,44 @@
+#include "WPILib.h"
+#include "CANTalon.h"
+#include <IterativeRobot.h>
+
+ class LiftArmDefaultCode : public IterativeRobot
+ {
+ 	CANTalon arm1;
+ 	CANTalon arm2;
+
+ public:
+
+ 	Joystick *m_auxilaryStick; 	// auxilary joystick object on USB port 0
+
+ 	LiftArmDefaultCode(void) : arm1(2), arm2(3)
+ 	{
+ 		CameraServer::GetInstance()->StartAutomaticCapture();
+ 		/* Set every Talon to reset the motor safety timeout. */
+ 		arm1.Set(0);
+ 		arm2.Set(0);
+ 		m_auxilaryStick = new Joystick(0);
+ 	}
+
+ 	void AutonomousInit()
+ {
+ }
+ 	void TeleopPeriodic(void)
+ 	{
+
+  //down
+  while(m_auxilaryStick->GetRawButton(5)){
+ 		arm1.Set(0.50);
+ 		arm2.Set(0.50);
+   }
+  //up
+  while(m_auxilaryStick->GetRawButton(6)){
+ 		arm1.Set(-10);
+ 		arm2.Set(-10);
+ 	}
+    arm1.Set(0);
+  	arm2.Set(0);  
+ 	}
+
+ };
+ START_ROBOT_CLASS(LiftArmDefaultCode);
