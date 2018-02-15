@@ -65,8 +65,8 @@ public:
 
 			if(m_intakestick->GetRawButton(1))
       {
-				spark1->Set(8);
-				spark2->Set(8);
+				spark1->Set(2);
+				spark2->Set(2);
 			}
 			else if(m_intakestick->GetRawButton(2))
       {
