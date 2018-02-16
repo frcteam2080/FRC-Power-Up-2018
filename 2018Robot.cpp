@@ -54,9 +54,9 @@ public:
 
 		while (IsOperatorControl())
 		{
-			m_robotDrive->MecanumDrive_Cartesian(	(m_driveStick->GetY()),
-			 										                  (m_driveStick->GetZWQ()),
-			 										                  (m_driveStick->GetX()));
+			m_robotDrive->MecanumDrive_Cartesian(	(0.85*-m_driveStick->GetY()),
+			 					(0.85*-m_driveStick->GetZWQ()),
+			 					(0.85*-m_driveStick->GetX()));
 			/* my right side motors need to drive negative to move robot forward */
 			 m_robotDrive->SetInvertedMotor(RobotDrive::kFrontRightMotor,true);
 			 m_robotDrive->SetInvertedMotor(RobotDrive::kFrontLeftMotor,false);
@@ -65,8 +65,8 @@ public:
 
 			if(m_intakestick->GetRawButton(1))
       {
-				spark1->Set(2);
-				spark2->Set(2);
+				spark1->Set(8);
+				spark2->Set(8);
 			}
 			else if(m_intakestick->GetRawButton(2))
       {
